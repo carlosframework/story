@@ -108,6 +108,10 @@ presented from a pocket Pi over venue Wi-Fi; nothing may depend on a CDN).
     Raspberry Pi in Paul's pocket this whole time. Then: **"That's actually
     it."** — with the roll-call of links.
 
+(2026-08-12: a third prompt card — the Amadan prompt, quoted verbatim —
+sits between the final "One more thing…" interstitial and the Amadan
+slide, bringing the deck to 29 slides.)
+
 (Exact slide count may drift ±2 as copy is written; the beats and their
 order are the contract. The final "That's actually it." may be its own
 closing slide if the reveal reads better bare.)
