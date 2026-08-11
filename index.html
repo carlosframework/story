@@ -324,7 +324,7 @@ body{overflow:auto}
     if (tx === null) return;
     const dx = e.changedTouches[0].clientX - tx;
     tx = null;
-    if (Math.abs(dx) > 40) { swiped = true; dx < 0 ? show(cur + 1) : show(cur - 1); }
+    if (Math.abs(dx) > 40) { swiped = true; setTimeout(() => swiped = false, 400); dx < 0 ? show(cur + 1) : show(cur - 1); }
   }, { passive: true });
   fromHash();
 })();
