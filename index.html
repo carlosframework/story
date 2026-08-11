@@ -77,6 +77,213 @@ body{overflow:auto}
   <p class="big">Score.</p>
 </section>
 
+<section class="slide">
+  <h2>The next problem was chat.</h2>
+  <p>The same kid ran an iMessage group with his friends &mdash; and the
+  Android kids couldn&rsquo;t join. I threatened to make an app.</p>
+  <blockquote>
+    <p>I&rsquo;m starting to think you could do the chat app after all.</p>
+  </blockquote>
+  <cite>&mdash; the kid, after lpay</cite>
+</section>
+
+<section class="slide">
+  <div class="term">
+    <header><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      <span class="term-title">June 27 &mdash; the first prompt</span></header>
+    <pre><span class="ps1">&gt; </span>I want to make a chat app. It's kid friendly. It doesn't require any kind of log in: just a secret link to initialise, and when I send someone the link, they get to choose a screen name. I can deploy it easily and run it on a single server. Should it use sqlite? I want all the messages to be encrypted, so that if someone compromises the server, they can't access anything.</pre>
+  </div>
+</section>
+
+<section class="slide product">
+  <p class="kicker">Three weeks later</p>
+  <h1 class="name">Eleven</h1>
+  <a class="url" href="https://elevenmessenger.com" target="_blank" rel="noopener">elevenmessenger.com</a>
+  <p>Kid-friendly, end-to-end encrypted, no accounts. A secret link and a
+  screen name.</p>
+</section>
+
+<section class="slide">
+  <h2>Everyone kept looking at the chat&nbsp;app.</h2>
+  <p>The interesting part was a session from July&nbsp;9.</p>
+</section>
+
+<section class="slide">
+  <div class="term">
+    <header><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      <span class="term-title">July 9 &mdash; the second prompt</span></header>
+    <pre><span class="ps1">&gt; </span>How do we make deploying home and the oauth broker apps essentially infinitely scaleable?</pre>
+  </div>
+</section>
+
+<section class="slide">
+  <p class="kicker">Out of that question</p>
+  <h2>A philosophy, then an architecture.</h2>
+  <p><a href="https://11factor.org" target="_blank" rel="noopener" class="url">11factor.org</a><br>
+  a philosophy for building software responsibly with LLMs.</p>
+  <p><a href="https://carlosframework.com" target="_blank" rel="noopener" class="url">carlosframework.com</a><br>
+  the architecture built on it.</p>
+</section>
+
+<section class="slide">
+  <p class="kicker">Run it in the open</p>
+  <h2>Operations as an open&nbsp;ledger.</h2>
+  <p><a href="https://status.elevenmessenger.com" target="_blank" rel="noopener" class="url">status.elevenmessenger.com</a></p>
+  <p>An append-only, verifiable record of what the service is
+  <strong>actually doing</strong> &mdash; not a status page that says
+  &ldquo;all systems operational&rdquo;. A direct consequence of 11factor.</p>
+</section>
+
+<section class="slide">
+  <h2>And run it anywhere.</h2>
+  <p>When highly-available apps are this cheap and this simple to operate,
+  on-prem stops being a compromise.</p>
+  <p><strong>Your hardware. Your data. The same availability.</strong></p>
+  <p>Remember this one.</p>
+</section>
+
+<section class="slide">
+  <h2>People were skeptical.</h2>
+  <p>&ldquo;What&rsquo;s the point?&rdquo; Fair.</p>
+  <p>So: prove it across every shape of app &mdash; <strong>E2EE,
+  single-process, single-database, multi-region,
+  multi-platform</strong>.</p>
+</section>
+
+<section class="slide product">
+  <p class="kicker">Proof, part one</p>
+  <h1 class="name">Keymail</h1>
+  <a class="url" href="https://keymail.dev" target="_blank" rel="noopener">keymail.dev</a>
+  <p>Email, but secure.</p>
+</section>
+
+<section class="slide">
+  <h2>Suddenly it seemed feasible to replace the SaaS we were
+  paying&nbsp;for.</h2>
+  <p><strong>Secure. Affordable. Ours.</strong></p>
+</section>
+
+<section class="slide product">
+  <p class="kicker">Proof, part two</p>
+  <h1 class="name">Slopbox</h1>
+  <a class="url" href="https://slopbox.cloud" target="_blank" rel="noopener">slopbox.cloud</a>
+  <p>Like OG Dropbox, with no upsells. Simple, fast, encrypted.</p>
+</section>
+
+<section class="slide product">
+  <p class="kicker">Proof, part three</p>
+  <h1 class="name">Woodstar</h1>
+  <a class="url" href="https://woodstar.app" target="_blank" rel="noopener">woodstar.app</a>
+  <p>Mastodon: too nerdy. Bluesky: URLs where handles should be.</p>
+  <p>Woodstar: <strong>each profile its own database</strong> &mdash; and it
+  feels like OG Twitter.</p>
+</section>
+
+<section class="slide">
+  <p class="kicker">Meanwhile</p>
+  <h2>Tito was being rebuilt in this&nbsp;shape.</h2>
+  <p>Vicky, product manager, hit a productivity unlike anything I&rsquo;d
+  ever seen &mdash; <strong>UX-first</strong> on a resilient, dynamic stack
+  built for extremely fast iteration.</p>
+</section>
+
+<section class="slide product">
+  <p class="kicker">Proof, part four</p>
+  <h1 class="name">Kass</h1>
+  <a class="url" href="https://kass.training" target="_blank" rel="noopener">kass.training</a>
+  <p>My gym log, shared securely with my personal trainer &mdash; not with a
+  US data firm.</p>
+</section>
+
+<section class="slide product">
+  <p class="kicker">Time to extract</p>
+  <h1 class="name">Rastrillo</h1>
+  <a class="url" href="https://rastrillo.org" target="_blank" rel="noopener">rastrillo.org</a>
+  <p>With the examples in hand: the web framework underneath all of them,
+  pulled out and given a name.</p>
+</section>
+
+<section class="slide">
+  <p class="kicker">And keep proving it</p>
+  <h2>Seapointish</h2>
+  <p>E2EE, self-hostable financial reporting &mdash; we know the
+  <a href="https://seapoint.co" target="_blank" rel="noopener" class="url">seapoint.co</a>
+  founders, so it makes a good demo.</p>
+  <p>Next on the list: porting Vito
+  (<a href="https://vi.to" target="_blank" rel="noopener" class="url">vi.to</a>).</p>
+</section>
+
+<section class="slide">
+  <p class="kicker">The tally</p>
+  <h2>Six weeks in:</h2>
+  <p><strong>Eleven</strong> built in three weeks. <strong>Keymail, Slopbox,
+  Woodstar, Kass</strong> the week after.</p>
+  <p>A philosophy. An architecture built on the philosophy. A reusable web
+  framework on top of it all.</p>
+  <p>Apps that cost <strong>pennies per month</strong> &mdash; in the cloud
+  or on-prem. The architecture doesn&rsquo;t mind.</p>
+</section>
+
+<section class="slide interstitial">
+  <h2>But there&rsquo;s one more&nbsp;thing&hellip;</h2>
+</section>
+
+<section class="slide">
+  <h2>What if deployment was the product?</h2>
+  <p>I&rsquo;d been creating a fresh AWS account for every app.</p>
+  <p>What if a properly global platform orchestrated it all &mdash;
+  <strong>deploys in seconds</strong>, bring your own box, instances placed
+  anywhere in the world, <strong>per tenant rather than per app</strong>?</p>
+</section>
+
+<section class="slide product">
+  <p class="kicker">The CARLOS platform, flagship</p>
+  <h1 class="name">Carloku</h1>
+  <a class="url" href="https://carloku.com" target="_blank" rel="noopener">carloku.com</a>
+  <p>Inspired by Heroku &mdash; and everything Heroku wasn&rsquo;t:
+  <strong>truly multi-region</strong>; your boxes, Carloku&rsquo;s
+  orchestration; or run the whole platform yourself.</p>
+</section>
+
+<section class="slide interstitial">
+  <h2>One more thing&hellip;</h2>
+</section>
+
+<section class="slide product">
+  <p class="kicker">Doesn&rsquo;t GitHub kinda suck these days? Bloated. Slow. AI bolted on.</p>
+  <h1 class="name">Amadan</h1>
+  <a class="url" href="https://amadan.net" target="_blank" rel="noopener">amadan.net</a>
+  <p><strong>Blazing fast.</strong> Cloud or self-hosted, first-class. E2EE
+  optional. Familiar concepts, fresh ideas &mdash; multiple conversations
+  around a single branch. <em>Shock, horror.</em></p>
+</section>
+
+<section class="slide interstitial">
+  <h2>One more thing&hellip;</h2>
+</section>
+
+<section class="slide">
+  <p class="kicker">Eleven &middot; Keymail &middot; Slopbox &middot; Woodstar &middot; Amadan</p>
+  <h2>Every demo you just saw has been running on a Raspberry&nbsp;Pi in my
+  pocket this whole&nbsp;time.</h2>
+</section>
+
+<section class="slide">
+  <h2>That&rsquo;s actually&nbsp;it.</h2>
+  <ul class="roll">
+    <li><a href="https://elevenmessenger.com" target="_blank" rel="noopener">elevenmessenger.com</a></li>
+    <li><a href="https://keymail.dev" target="_blank" rel="noopener">keymail.dev</a></li>
+    <li><a href="https://slopbox.cloud" target="_blank" rel="noopener">slopbox.cloud</a></li>
+    <li><a href="https://woodstar.app" target="_blank" rel="noopener">woodstar.app</a></li>
+    <li><a href="https://kass.training" target="_blank" rel="noopener">kass.training</a></li>
+    <li><a href="https://rastrillo.org" target="_blank" rel="noopener">rastrillo.org</a></li>
+    <li><a href="https://11factor.org" target="_blank" rel="noopener">11factor.org</a></li>
+    <li><a href="https://carlosframework.com" target="_blank" rel="noopener">carlosframework.com</a></li>
+    <li><a href="https://carloku.com" target="_blank" rel="noopener">carloku.com</a></li>
+    <li><a href="https://amadan.net" target="_blank" rel="noopener">amadan.net</a></li>
+  </ul>
+</section>
+
 </main>
 <div id="counter"></div>
 <script>
