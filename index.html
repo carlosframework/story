@@ -67,7 +67,7 @@ ul.roll{list-style:none;display:flex;flex-wrap:wrap;
 #panel .site .loading{position:absolute;inset:0;display:flex;align-items:center;
   justify-content:center;color:var(--faint);font-family:var(--mono);
   font-size:clamp(13px,2vmin,18px);padding:2vmin;text-align:center}
-#panel iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:transparent}
+#panel iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:transparent;pointer-events:none}
 @media (max-width:720px){#panel{width:88vw}}
 </style>
 <noscript><style>
@@ -364,18 +364,21 @@ body{overflow:auto}
     panelOpen = open;
     panel.classList.toggle('open', open);
     panel.setAttribute('aria-hidden', String(!open));
+    panel.inert = !open;
   }
   function show(n, withPanel) {
     n = Math.max(0, Math.min(slides.length - 1, n));
     const wants = !!withPanel && !!site(n);
     if (n === cur) { if (panelOpen !== wants) setPanel(wants); return; }
     if (cur >= 0) slides[cur].classList.remove('current');
+    const wasOpen = panelOpen;
     cur = n;
     slides[cur].classList.add('current');
     counter.textContent = (n + 1) + ' / ' + slides.length;
     history.replaceState(null, '', '#' + (n + 1));
-    prime(n);
     setPanel(wants);
+    if (wants || !wasOpen) prime(n);
+    else setTimeout(() => { if (cur === n) prime(n); }, 480);
   }
   function next() { if (site(cur) && !panelOpen) setPanel(true); else show(cur + 1, false); }
   function prev() { if (panelOpen) setPanel(false); else show(cur - 1, true); }
@@ -389,6 +392,7 @@ body{overflow:auto}
     else if (e.key === 'ArrowLeft' || e.key === 'PageUp') prev();
     else if (e.key === 'Home') show(0, false);
     else if (e.key === 'End') show(slides.length - 1, false);
+    else if (e.key === 'r' && !e.metaKey && !e.ctrlKey && !e.altKey) { framed = null; prime(cur); }
     else return;
     e.preventDefault();
   });
@@ -400,6 +404,7 @@ body{overflow:auto}
   let tx = null;
   addEventListener('touchstart', e => { tx = e.changedTouches[0].clientX; }, { passive: true });
   addEventListener('touchend', e => {
+    if (e.target.closest('#panel')) { tx = null; return; }
     if (tx === null) return;
     const dx = e.changedTouches[0].clientX - tx;
     tx = null;
