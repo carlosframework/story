@@ -112,6 +112,33 @@ presented from a pocket Pi over venue Wi-Fi; nothing may depend on a CDN).
 order are the contract. The final "That's actually it." may be its own
 closing slide if the reveal reads better bare.)
 
+## Live site panels (added 2026-08-12, Paul's request)
+
+Slides that present a site gain a build step: the first Next press slides a
+pseudo-browser in from the right (rounded sheet, dot-traffic-lights header,
+URL pill, live iframe below); the second press advances. Back closes the
+panel first; backing into a paneled slide shows the panel already open
+(Keynote build semantics). Hash addressing stays `#N` — panel state is not
+in the URL.
+
+- Paneled slides: Eleven, 11factor.org, status.elevenmessenger.com,
+  Keymail, Slopbox, Woodstar, Kass, Rastrillo, Carloku, Amadan (declared
+  via `data-site` on the section). The seapoint/vi.to slide and the closing
+  roll-call get no panel.
+- The iframe pre-loads when its slide is entered (before the panel opens),
+  one shared panel/iframe for the whole deck.
+- **Offline constraint, amended:** the deck's own assets remain fully
+  self-contained; site panels are the one deliberate runtime exception —
+  live iframes that need network and degrade to chrome + URL pill when
+  unreachable. The mechanical no-external-asset check is `src="` (attribute
+  form), which stays at zero; iframe src is assigned only at runtime.
+- **Keymail exception:** keymail.dev sends `frame-ancestors 'none'`, so its
+  panel renders a built-in sample email page instead (inline `<template
+  id="mock-keymail">` injected via iframe `srcdoc` — no network involved),
+  with the URL pill still reading keymail.dev. Mock content is content, so
+  it may use its own light email-client colors and a lock emoji, exempt
+  from the deck-chrome palette rule like real framed sites are.
+
 ## Source and deploy
 
 - Source: this repo, `carlosframework/story`. `index.html` at the root.
