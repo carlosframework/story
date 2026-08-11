@@ -125,6 +125,12 @@ in the URL.
   Keymail, Slopbox, Woodstar, Kass, Rastrillo, Carloku, Amadan (declared
   via `data-site` on the section). The seapoint/vi.to slide and the closing
   roll-call get no panel.
+- `data-site` is a space-separated list; each Next press steps to the next
+  site in the same panel before advancing, Back steps backward through
+  them. Amadan has two steps: amadan.net, then amadan.net/amadan/amadan —
+  Amadan hosting its own source (2026-08-12, Paul).
+- The closing roll-call lists 11 projects — go.tito.io joins between
+  woodstar.app and kass.training (2026-08-12, Paul).
 - The iframe pre-loads when its slide is entered (before the panel opens),
   one shared panel/iframe for the whole deck.
 - **Offline constraint, amended:** the deck's own assets remain fully

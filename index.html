@@ -268,7 +268,7 @@ body{overflow:auto}
   <h2>One more thing&hellip;</h2>
 </section>
 
-<section class="slide product" data-site="https://amadan.net">
+<section class="slide product" data-site="https://amadan.net https://amadan.net/amadan/amadan">
   <p class="kicker">Doesn&rsquo;t GitHub kinda suck these days? Bloated. Slow. AI bolted on.</p>
   <h1 class="name">Amadan</h1>
   <a class="url" href="https://amadan.net" target="_blank" rel="noopener">amadan.net</a>
@@ -294,6 +294,7 @@ body{overflow:auto}
     <li><a href="https://keymail.dev" target="_blank" rel="noopener">keymail.dev</a></li>
     <li><a href="https://slopbox.cloud" target="_blank" rel="noopener">slopbox.cloud</a></li>
     <li><a href="https://woodstar.app" target="_blank" rel="noopener">woodstar.app</a></li>
+    <li><a href="https://go.tito.io" target="_blank" rel="noopener">go.tito.io</a></li>
     <li><a href="https://kass.training" target="_blank" rel="noopener">kass.training</a></li>
     <li><a href="https://rastrillo.org" target="_blank" rel="noopener">rastrillo.org</a></li>
     <li><a href="https://11factor.org" target="_blank" rel="noopener">11factor.org</a></li>
@@ -342,17 +343,20 @@ body{overflow:auto}
   const frame = document.getElementById('frame');
   const addr = document.getElementById('addr');
   const loading = document.getElementById('loading');
-  let cur = -1, swiped = false, panelOpen = false, framed = null;
-  const site = n => (slides[n] && slides[n].dataset.site) || null;
-  function prime(n) {
-    const s = site(n);
+  let cur = -1, swiped = false, panelStep = 0, framed = null;
+  const sites = n => {
+    const d = slides[n] && slides[n].dataset.site;
+    return d ? d.split(' ') : [];
+  };
+  function prime(n, i) {
+    const s = sites(n)[i];
     if (!s || framed === s) return;
     framed = s;
     const label = s.replace(/^https:\/\//, '');
     addr.textContent = label;
     loading.textContent = label;
     const mock = slides[n].dataset.mock;
-    if (mock) {
+    if (mock && i === 0) {
       frame.removeAttribute('src');
       frame.srcdoc = document.getElementById(mock).innerHTML;
     } else {
@@ -360,28 +364,31 @@ body{overflow:auto}
       frame.src = s;
     }
   }
-  function setPanel(open) {
-    panelOpen = open;
+  function setPanel(step) {
+    panelStep = step;
+    const open = step > 0;
     panel.classList.toggle('open', open);
     panel.setAttribute('aria-hidden', String(!open));
     panel.inert = !open;
+    if (open) prime(cur, step - 1);
   }
-  function show(n, withPanel) {
+  function show(n, built) {
     n = Math.max(0, Math.min(slides.length - 1, n));
-    const wants = !!withPanel && !!site(n);
-    if (n === cur) { if (panelOpen !== wants) setPanel(wants); return; }
+    const target = built ? sites(n).length : 0;
+    if (n === cur) { if (panelStep !== target) setPanel(target); return; }
     if (cur >= 0) slides[cur].classList.remove('current');
-    const wasOpen = panelOpen;
+    const wasOpen = panelStep > 0;
     cur = n;
     slides[cur].classList.add('current');
     counter.textContent = (n + 1) + ' / ' + slides.length;
     history.replaceState(null, '', '#' + (n + 1));
-    setPanel(wants);
-    if (wants || !wasOpen) prime(n);
-    else setTimeout(() => { if (cur === n) prime(n); }, 480);
+    setPanel(target);
+    if (target > 0) return;
+    if (!wasOpen) prime(n, 0);
+    else setTimeout(() => { if (cur === n) prime(n, 0); }, 480);
   }
-  function next() { if (site(cur) && !panelOpen) setPanel(true); else show(cur + 1, false); }
-  function prev() { if (panelOpen) setPanel(false); else show(cur - 1, true); }
+  function next() { if (panelStep < sites(cur).length) setPanel(panelStep + 1); else show(cur + 1, false); }
+  function prev() { if (panelStep > 0) setPanel(panelStep - 1); else show(cur - 1, true); }
   const fromHash = () => {
     const n = parseInt(location.hash.slice(1), 10);
     show(Number.isFinite(n) ? n - 1 : 0, false);
@@ -392,7 +399,7 @@ body{overflow:auto}
     else if (e.key === 'ArrowLeft' || e.key === 'PageUp') prev();
     else if (e.key === 'Home') show(0, false);
     else if (e.key === 'End') show(slides.length - 1, false);
-    else if (e.key === 'r' && !e.metaKey && !e.ctrlKey && !e.altKey) { framed = null; prime(cur); }
+    else if (e.key === 'r' && !e.metaKey && !e.ctrlKey && !e.altKey) { framed = null; prime(cur, Math.max(0, panelStep - 1)); }
     else return;
     e.preventDefault();
   });
