@@ -413,13 +413,12 @@ body{overflow:auto}
   });
   addEventListener('click', e => {
     if (swiped) { swiped = false; return; }
-    if (e.target.closest('a') || e.target.closest('#panel')) return;
+    if (e.target.closest('a')) return;
     (e.clientX < innerWidth / 3) ? prev() : next();
   });
   let tx = null;
   addEventListener('touchstart', e => { tx = e.changedTouches[0].clientX; }, { passive: true });
   addEventListener('touchend', e => {
-    if (e.target.closest('#panel')) { tx = null; return; }
     if (tx === null) return;
     const dx = e.changedTouches[0].clientX - tx;
     tx = null;
