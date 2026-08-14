@@ -110,7 +110,11 @@ presented from a pocket Pi over venue Wi-Fi; nothing may depend on a CDN).
 
 (2026-08-14: the deck leads with the Tito hook — slide 2, right after the
 title: Tito stands to save $7,000/month in AWS fees and ends up with a more
-robust system; then the story rewinds to lpay. 30 slides.)
+robust system; then the story rewinds to lpay. After the Carloku demo the
+hook pays off: Tito as the first third-party CARLOS deployment, then the
+itemized "what CARLOS replaces" slide — load balancers, NAT gateways,
+managed DBs/caches, orchestration, log stacks, deploy pipelines → two
+boxes, one binary and a bucket, ~$60/month of EC2. 32 slides.)
 
 (2026-08-12: a third prompt card — the Amadan prompt, quoted verbatim —
 sits between the final "One more thing…" interstitial and the Amadan
