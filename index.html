@@ -88,6 +88,14 @@ body{overflow:auto}
 </section>
 
 <section class="slide">
+  <p class="kicker">Why you should care</p>
+  <h2>Tito stands to save $7,000 a&nbsp;month in AWS&nbsp;fees.</h2>
+  <p>Rebuilt in the shape this talk is about &mdash; and it ends up with a
+  <strong>more robust</strong> system, not a compromise.</p>
+  <p>Here&rsquo;s how we got there. It started much smaller.</p>
+</section>
+
+<section class="slide">
   <p class="kicker">Where it started</p>
   <h2>lpay.fly.dev</h2>
   <p>A Rails app on Fly. Ten seconds to wake from hibernation.</p>
@@ -262,6 +270,23 @@ body{overflow:auto}
   <p>Inspired by Heroku &mdash; and everything Heroku wasn&rsquo;t:
   <strong>truly multi-region</strong>; your boxes, Carloku&rsquo;s
   orchestration; or run the whole platform yourself.</p>
+</section>
+
+<section class="slide">
+  <p class="kicker">And the first third-party deployment</p>
+  <h2>Tito runs its own&nbsp;CARLOS.</h2>
+  <p>The whole platform, self-hosted on Tito&rsquo;s own boxes &mdash;
+  console, routing, deploys, the lot. The rebuild you saw earlier ships to
+  it every day.</p>
+</section>
+
+<section class="slide">
+  <p class="kicker">Remember the $7,000?</p>
+  <h2>What CARLOS replaces</h2>
+  <p>Load balancers. NAT gateways. Managed databases and caches. Container
+  orchestration. Log and metrics stacks. Deploy pipelines.</p>
+  <p>Replaced by <strong>two boxes, one binary and a bucket</strong> &mdash;
+  around $60 a month of EC2.</p>
 </section>
 
 <section class="slide interstitial">
